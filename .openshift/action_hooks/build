@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ODOO_VERSION=master
-ODOO_TIMESTAMP=20140517-231234
+ODOO_VERSION=11.0
+#ODOO_TIMESTAMP=20140517-231234
 ODOO_URL=https://github.com/odoo/odoo/archive/$ODOO_VERSION.zip
 
 cp ${OPENSHIFT_REPO_DIR}/wkhtmltopdf/wkhtmltopdf ${OPENSHIFT_PYTHON_DIR}/virtenv/bin
@@ -13,12 +13,12 @@ cd $OPENSHIFT_DATA_DIR
 #	exit 0
 #fi
 
-if [ ! -f "$OPENSHIFT_DATA_DIR/odoo-${ODOO_VERSION}-${ODOO_TIMESTAMP}.zip" ]; then
+if [ ! -f "$OPENSHIFT_DATA_DIR/odoo-${ODOO_VERSION}.zip" ]; then
   echo "Odoo will be downloaded now."
-  #rm -f $OPENSHIFT_DATA_DIR/odoo-${ODOO_VERSION}-${ODOO_TIMESTAMP}.zip
-  wget $ODOO_URL -O $OPENSHIFT_DATA_DIR/odoo-${ODOO_VERSION}-${ODOO_TIMESTAMP}.zip
+  #rm -f $OPENSHIFT_DATA_DIR/odoo-${ODOO_VERSION}.zip
+  wget $ODOO_URL -O $OPENSHIFT_DATA_DIR/odoo-${ODOO_VERSION}.zip
 
-  unzip -o $OPENSHIFT_DATA_DIR/odoo-${ODOO_VERSION}-${ODOO_TIMESTAMP}.zip
+  unzip -o $OPENSHIFT_DATA_DIR/odoo-${ODOO_VERSION}.zip
 
   rm -f $OPENSHIFT_DATA_DIR/odoo
   ln -s $OPENSHIFT_DATA_DIR/odoo-${ODOO_VERSION} $OPENSHIFT_DATA_DIR/odoo

@@ -38,10 +38,11 @@ conf = openerp.tools.config
 # Path to the ODOO Addons repository (comma-separated for
 # multiple locations)
 
-conf['addons_path'] = ','.join([os.path.join(ODOO_ROOT_DIR,'openerp' ,'addons'),os.path.join(ODOO_ROOT_DIR, 'addons'),os.path.join(os.environ.get('OPENSHIFT_REPO_DIR', '.'), 'addons')])
+conf['addons_path'] = ','.join([os.path.join(ODOO_ROOT_DIR, 'addons'),os.path.join(os.environ.get('OPENSHIFT_REPO_DIR', '.'), 'addons')])
 #conf['addons_path'] = os.path.join(os.environ.get('OPENSHIFT_REPO_DIR', '.'), 'addons')
 
 # Optional database config if not using local socket
+conf['admin_passwd'] = os.environ.get('ODOO_ADMIN_PASS','yzazy')
 conf['db_host']     = os.environ['OPENSHIFT_POSTGRESQL_DB_HOST']
 conf['db_port']     = int(os.environ['OPENSHIFT_POSTGRESQL_DB_PORT'])
 conf['db_user']     = os.environ['OPENSHIFT_POSTGRESQL_DB_USERNAME']
